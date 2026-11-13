@@ -18,6 +18,11 @@ export class AppController {
       throw new Error('Unable to determine client IP address');
     }
 
+    console.log({
+      ip,
+      forwardedFor: request.get('x-forwarded-for') ?? ip,
+    })
+
     return {
       ip,
       forwardedFor: request.get('x-forwarded-for') ?? ip,
